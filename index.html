@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Magic Indicator 5</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <ul>
+        <li><a href="#"><ion-icon name="home"></ion-icon><text>Home</text></a></li>
+        <li><a href="#"><ion-icon name="person"></ion-icon><text>Account</text></a></li>
+        <li class="active"><a href="#"><ion-icon name="add-circle"></ion-icon><text>Create</text></a></li>
+        <li><a href="#"><ion-icon name="settings"></ion-icon><text>Settings</text></a></li>
+        <li><a href="#"><ion-icon name="chatbubble"></ion-icon><text>Chat</text></a></li>
+        <div id="marker"><span></span></div>
+    </ul>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        let marker = document.querySelector('#marker');
+        let list = document.querySelectorAll('ul li');
+
+        function moveIndicator(e){
+            marker.style.left = e.offsetLeft+'px';
+            marker.style.width = e.offsetWidth+'px';
+        }
+
+        list.forEach(link => {
+            link.addEventListener('click', (e) => {
+                moveIndicator(e.target);
+            })
+        })
+
+        // add active class in hovered list item
+       function activeLink(){
+        list.forEach((item) =>
+        item.classList.remove('active'));
+        this.classList.add('active');
+       }
+
+       list.forEach((item) =>
+       item.addEventListener('click', activeLink));
+    </script>
+</body>
+</html>
